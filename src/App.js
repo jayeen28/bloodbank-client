@@ -1,10 +1,79 @@
-import React from 'react';
+import './App.css';
+import { Main } from './Components/Main/Main';
+import { Footer } from './Components/Shared/Custom/Footer/Footer';
+import { Header } from './Components/Shared/Custom/Header/Header';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from "@mui/material";
+import { useState } from 'react';
 
-const App = () => {
+function App() {
+  const [mode, setMode] = useState('dark');
+  const theme = createTheme({
+    typography: {
+      fontFamily: '"Poppins", sans-serif',
+      mode,
+      ...(mode === 'light' ? {
+        h2: {
+          color: 'Black'
+        },
+        h4: {
+          color: 'Black'
+        },
+        body1: {
+          color: 'Black'
+        },
+        body2: {
+          color: 'Black'
+        }
+      } : {
+        h2: {
+          color: '#E2E2E2'
+        },
+        h4: {
+          color: '#E2E2E2'
+        },
+        body1: {
+          color: '#919191'
+        },
+        body2: {
+          color: '#919191'
+        }
+      })
+    },
+    palette: {
+      mode,
+      ...(mode === 'light' ?
+        {
+          primary: {
+            main: '#FFFFFF',
+          },
+          secondary: {
+            main: '#F1B80C',
+          }
+        } :
+        {
+          background: {
+            default: '#000000'
+          },
+          primary: {
+            main: '#FFFFFF'
+          },
+          secondary: {
+            main: '#F1B80C',
+          }
+        }
+      )
+    },
+  });
   return (
-    <div>
-      !Big bang
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className="App">
+        <Header />
+        <Main />
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 
