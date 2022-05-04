@@ -19,7 +19,7 @@ export const Login = () => {
         const { user, token } = data;
         // encrypt user token
         const encryptedToken = cryptoJs.AES.encrypt(JSON.stringify(token), `${process.env.ENCRYPTION_KEY}`).toString();
-        Cookies.set('flex', encryptedToken, { expires: cookieDuration });
+        Cookies.set(`${process.env.REACT_APP_SHORT_NAME}`, encryptedToken, { expires: cookieDuration });
         setUser({ ...user, token })
     }
     const handleLogin = data => {

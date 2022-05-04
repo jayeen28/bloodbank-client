@@ -22,7 +22,7 @@ const useAuthentication = () => {
     // Hold user info 
     useEffect(() => {
         setisLoading(true);
-        const userToken = Cookies.get('flex');
+        const userToken = Cookies.get(process.env.REACT_APP_SHORT_NAME);
         // if token doesn't exists in cookies then redirect user to login page
         if (userToken) {
             //decrypt user token from cookies

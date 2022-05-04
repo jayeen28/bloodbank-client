@@ -28,7 +28,6 @@ export const useManageUsers = () => {
     const userLogin = (data) => {
         setisLoading(true);
         return handleAxios({ method: 'post', uri: 'users/login', data })
-        // return axios.post(`${process.env.REACT_APP_SERVER_URL}/users/login`, data)
     }
 
     //handle registration
