@@ -14,10 +14,20 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useManageUsers } from '../../../../Hooks/useManageUsers';
 
-const pages = [{
-    title: 'Home',
-    url: '/home'
-}];
+const pages = [
+    {
+        title: 'Home',
+        url: '/home'
+    },
+    {
+        title: 'Donors',
+        url: '/donors'
+    },
+    {
+        title: 'Timeline',
+        url: '/time-line'
+    }
+];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export const Header = () => {
@@ -115,7 +125,7 @@ export const Header = () => {
                                         handleCloseNavMenu();
                                         navigate(page.url);
                                     }}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
+                                    sx={{ my: 2, color: 'white', display: 'block', textTransform: 'capitalize' }}
                                 >
                                     {page.title}
                                 </Button>
