@@ -28,7 +28,16 @@ const pages = [
         url: '/time-line'
     }
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = [
+    {
+        title: 'Profile',
+        url: '/profile'
+    },
+    {
+        title: 'Dashboard',
+        url: '/dashboard'
+    }
+];
 
 export const Header = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -154,12 +163,12 @@ export const Header = () => {
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-                                <MenuItem onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">Profile</Typography>
-                                </MenuItem>
-                                <MenuItem onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">Dashboard</Typography>
-                                </MenuItem>
+                                {settings.map(setting => <MenuItem key={setting.title} onClick={() => {
+                                    handleCloseUserMenu();
+                                    navigate(setting.url);
+                                }}>
+                                    <Typography textAlign="center">{setting.title}</Typography>
+                                </MenuItem>)}
                                 <MenuItem onClick={() => {
                                     handleCloseUserMenu();
                                     userLogout();
