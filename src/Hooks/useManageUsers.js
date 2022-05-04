@@ -143,6 +143,15 @@ export const useManageUsers = () => {
         return handleAxios({ method: 'POST', uri: 'email', data })
     }
 
+    /**
+     * This function is used for getting donors list.
+     * @param {String} page This string indicates the page user wants.
+     * @param {String} limit This string indicates how many results will come for one page.
+     */
+    const getDonors = (page = '1', limit = '10') => {
+        return handleAxios({ method: 'get', uri: `${'donors' + page + limit}` })
+    }
+
     return {
         updateUser,
         userLogin,
@@ -159,6 +168,7 @@ export const useManageUsers = () => {
         getUsers,
         updateLineUp,
         readProfileAsPublic,
-        sendEmail
+        sendEmail,
+        getDonors
     }
 }
