@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useManageUsers } from '../../../../Hooks/useManageUsers';
+import LOGO from '../../../../Assets/fast-blood-white.png';
 
 const pages = [
     {
@@ -70,7 +71,9 @@ export const Header = () => {
                             component="div"
                             sx={{ flexGrow: 1, mr: 3, display: { xs: 'none', md: 'flex' } }}
                         >
-                            LOGO
+                            <div className='desktop-logo-wrapper' style={{ width: '200px' }}>
+                                <img src={LOGO} alt="Fast Blood logo" style={{ width: '100%' }} />
+                            </div>
                         </Typography>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
