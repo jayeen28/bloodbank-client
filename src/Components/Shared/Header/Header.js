@@ -12,8 +12,8 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useManageUsers } from '../../../../Hooks/useManageUsers';
-import LOGO from '../../../../Assets/fast-blood-white.png';
+import { useManageUsers } from '../../../Hooks/useManageUsers';
+import LOGO from '../../../Assets/fast-blood-white.png';
 
 const pages = [
     {
