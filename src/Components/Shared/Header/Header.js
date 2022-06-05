@@ -71,7 +71,7 @@ export const Header = () => {
                             component="div"
                             sx={{ flexGrow: 1, mr: 3, display: { xs: 'none', md: 'flex' } }}
                         >
-                            <div className='desktop-logo-wrapper' style={{ width: '200px', display: 'flex', alignItems: 'center' }}>
+                            <div className='desktop-logo-wrapper' style={{ width: '200px', display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => navigate('/')}>
                                 <img src={LOGO} alt="Fast Blood logo" style={{ width: '100%' }} />
                             </div>
                         </Typography>
@@ -126,7 +126,7 @@ export const Header = () => {
                                 component="div"
                                 sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                             >
-                                <div className='desktop-logo-wrapper' style={{ width: '200px', display: 'flex', alignItems: 'center' }}>
+                                <div className='desktop-logo-wrapper' style={{ width: '200px', display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => navigate('/')}>
                                     <img src={LOGO} alt="Fast Blood logo" style={{ width: '100%' }} />
                                 </div>
                             </Typography>

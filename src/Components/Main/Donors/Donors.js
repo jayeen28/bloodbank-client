@@ -35,7 +35,6 @@ export const Donors = () => {
     }
 
     useEffect(() => {
-        console.log(page)
         setIsLoading(true);
         const searchText = document.getElementById('standard-basic').value || '';
         getDonors(searchText, page, rowsPerPage)
