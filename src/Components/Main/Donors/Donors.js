@@ -57,14 +57,12 @@ export const Donors = () => {
                             </div>
                         </div>
                         <div className="donors-section-content-header-right">
-                            <div className="donor-search-wrapper">
-                                <form onSubmit={handleSubmit(handleSearch)}>
-                                    <TextField id="standard-basic" label="Search" variant="standard" {...register('text')} />
-                                    <button type="submit" style={{ backgroundColor: 'transparent', border: 'none', color: 'gray' }}>
-                                        <SearchIcon sx={{ marginBottom: '-26px', '&:hover': { color: 'white', cursor: 'pointer' } }} />
-                                    </button>
-                                </form>
-                            </div>
+                            <form onSubmit={handleSubmit(handleSearch)} className="donor-search-wrapper">
+                                <TextField id="standard-basic" label="Search" variant="standard" {...register('text')} />
+                                <button type="submit" style={{ backgroundColor: 'transparent', border: 'none', color: 'gray' }}>
+                                    <SearchIcon sx={{ marginBottom: { sm: '-16px', md: '-22px' }, '&:hover': { color: 'white', cursor: 'pointer' } }} />
+                                </button>
+                            </form>
                         </div>
                     </div>
                     {

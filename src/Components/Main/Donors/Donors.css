@@ -45,3 +45,35 @@
     display: flex;
     align-items: center;
 }
+
+@media only screen and (max-width:900px){
+    .donors-section-content-body-list {
+        grid-template-columns: repeat(2,1fr);
+    }
+    form.donor-search-wrapper{
+        justify-content: flex-end;
+    }
+    form.donor-search-wrapper>div {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width:600px){
+    .donors-section-content-body-list {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .donor-card>div {
+        width: 50%;
+    }
+    .donor-card {
+        display: flex;
+    }
+    .donors-section-content-header {
+        flex-direction: column;
+        align-items: center;
+    }
+     form.donor-search-wrapper>div {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
