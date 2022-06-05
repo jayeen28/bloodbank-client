@@ -1,5 +1,5 @@
-import { Container, LinearProgress, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Container, LinearProgress, TablePagination, TextField } from "@mui/material";
+import { useEffect, useRef, useState } from "react";
 import { useManageUsers } from "../../../Hooks/useManageUsers";
 import './Donors.css';
 import SearchIcon from '@mui/icons-material/Search';
@@ -10,15 +10,42 @@ export const Donors = () => {
     const [isLoading, setIsLoading] = useState(true);
     const { getDonors } = useManageUsers();
     const { register, handleSubmit } = useForm();
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [totalDocs, setTotalDocs] = useState(0);
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    };
 
     const handleSearch = (data) => {
         setIsLoading(true);
         getDonors(data.text)
-            .then(({ data }) => setDonors(data))
+            .then(({ data: { donors, total } }) => {
+                setDonors(donors)
+                setTotalDocs(total)
+            })
             .catch(err => console.log(err))
             .finally(() => setIsLoading(false));
     }
-    useEffect(() => handleSearch({ text: '' }), [])
+
+    useEffect(() => {
+        console.log(page)
+        setIsLoading(true);
+        const searchText = document.getElementById('standard-basic').value || '';
+        getDonors(searchText, page, rowsPerPage)
+            .then(({ data: { donors, total } }) => {
+                setDonors(donors)
+                setTotalDocs(total)
+            })
+            .catch(err => console.log(err))
+            .finally(() => setIsLoading(false));
+    }, [page, rowsPerPage])
 
     return (
         <Container>
@@ -41,6 +68,9 @@ export const Donors = () => {
                     </div>
                     {
                         isLoading && <LinearProgress />
+                    }
+                    {
+                        !isLoading && donors.length === 0 && <span>No donors found</span>
                     }
                     <div className="donors-section-content-body">
                         <div className="donors-section-content-body-list">
@@ -70,6 +100,18 @@ export const Donors = () => {
                                 )
                             }
                         </div>
+                    </div>
+                </div>
+                <div className="donors-section-footer">
+                    <div className="pagination-wrapper">
+                        <TablePagination
+                            component="div"
+                            count={totalDocs}
+                            page={page}
+                            onPageChange={handleChangePage}
+                            rowsPerPage={rowsPerPage}
+                            onRowsPerPageChange={handleChangeRowsPerPage}
+                        />
                     </div>
                 </div>
             </section>
