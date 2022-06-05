@@ -22,3 +22,10 @@ input[type=number] {
 section {
     padding: 5% 0;
 }
+
+.pageHead>h1{
+    font-size: 40px;
+    color: white;
+    margin: 0px;
+    margin-bottom: 12px;
+}

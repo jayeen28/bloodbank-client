@@ -52,7 +52,9 @@ export const Donors = () => {
                 <div className="donors-section-content">
                     <div className="donors-section-content-header">
                         <div className="donors-section-content-header-left">
-                            <h1>Donors</h1>
+                            <div className="pageHead">
+                                <h1>Donors</h1>
+                            </div>
                         </div>
                         <div className="donors-section-content-header-right">
                             <div className="donor-search-wrapper">
