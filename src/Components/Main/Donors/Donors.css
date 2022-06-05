@@ -1,0 +1,47 @@
+.donors-section-content-body-list {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(4,1fr);
+}
+.donor-card-header {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.donor-card-header-left-content>img {
+    width: 100%;
+    border-radius: 100%;
+}
+
+.donor-card-header-left {
+    width: 22%;
+}
+.donor-card-header-right-content>h2 {
+    margin: 0px;
+    font-size: 16px;
+    font-weight: 300;
+}
+.donor-card-header-right-content>span {
+    font-size: 12px;
+    display: block;
+    margin-top: -4px;
+}
+.donor-card {
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 8px;
+}
+.donor-card-body-content>p {
+    margin: 0px;
+    font-size: 12px;
+    margin-left: 2px;
+}
+.donors-section-content-header {
+    display: flex;
+    justify-content: space-between;
+}
+.donor-search-wrapper {
+    display: flex;
+    align-items: center;
+}

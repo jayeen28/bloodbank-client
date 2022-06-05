@@ -148,7 +148,7 @@ export const useManageUsers = () => {
      * @param {String} page This string indicates the page user wants.
      * @param {String} limit This string indicates how many results will come for one page.
      */
-    const getDonors = (search = "Dhaka", page = '1', limit = '10') => {
+    const getDonors = (search = "Dhaka", page = '0', limit = '10') => {
         return handleAxios({ method: 'get', uri: `donors?search=${search}&page=${page}&limit=${limit}` })
     }
 
