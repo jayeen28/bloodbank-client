@@ -1,4 +1,4 @@
-import { Button, Container, TextField } from "@mui/material";
+import { Button, Container, Switch, TextField, Tooltip } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "../../../../Hooks/useAlert";
@@ -18,7 +18,7 @@ export const Signup = () => {
             createUser(data)
                 .then(() => {
                     showMessage('Successfully registered.', 'success');
-                    navigate('/login');
+                    navigate('/signin');
                     reset();
                 })
                 .catch(({ response: { data } }) => {
@@ -96,6 +96,11 @@ export const Signup = () => {
                                 {...register('bloodGroup')}
                                 type="text"
                             />
+                        </div>
+                        <div className="signup-section-content-form-input">
+                            <p style={{ margin: '0px' }}>
+                                Are you ready to donate?<Tooltip title="You can turn this on or off when ever you want at the profile page."><Switch defaultChecked color="warning" {...register('donating')} /></Tooltip>
+                            </p>
                         </div>
                         <span>Already have an account? Please <Link to="/signin">Sign in</Link>.</span>
                         <div className="signup-section-content-form-input">
