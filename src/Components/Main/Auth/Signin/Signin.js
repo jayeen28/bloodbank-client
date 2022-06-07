@@ -6,9 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../../Context/ContextHooks/useAuth";
 import { useAlert } from "../../../../Hooks/useAlert";
 import { useManageUsers } from "../../../../Hooks/useManageUsers";
-import './Login.css';
+import './Signin.css';
 
-export const Login = () => {
+export const Signin = () => {
     const { register, handleSubmit } = useForm();
     const { userLogin, userLogout } = useManageUsers();
     const { setUser, setisLoading } = useAuth();
@@ -24,7 +24,7 @@ export const Login = () => {
         Cookies.set(`${process.env.REACT_APP_SHORT_NAME}`, encryptedToken, { expires: cookieDuration });
         setUser({ ...user, token })
     }
-    const handleLogin = data => {
+    const handleSignin = data => {
         //handle user login function
         userLogin(data)
             .then(({ data }) => {
@@ -44,11 +44,11 @@ export const Login = () => {
             <section className="login-section">
                 <div className="login-section-head">
                     <div className="pageHead">
-                        <h1 style={{ textAlign: 'center' }}>Login</h1>
+                        <h1 style={{ textAlign: 'center' }}>Signin</h1>
                     </div>
                 </div>
                 <div className="login-section-content">
-                    <form onSubmit={handleSubmit(handleLogin)} className="login-section-content-form">
+                    <form onSubmit={handleSubmit(handleSignin)} className="login-section-content-form">
                         <div className="login-section-content-form-input">
                             <TextField
                                 label="Email"
@@ -71,7 +71,7 @@ export const Login = () => {
                         </div>
                         <span>Don't have an account? Please <Link to="/signup">signup</Link>.</span>
                         <div className="login-section-content-form-input">
-                            <Button type="submit" variant="contained" color="primary">Login</Button>
+                            <Button type="submit" variant="contained" color="primary">Signin</Button>
                         </div>
                     </form>
                 </div>

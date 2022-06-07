@@ -1,6 +1,6 @@
 import { Button, Container, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "../../../../Hooks/useAlert";
 import { useManageUsers } from "../../../../Hooks/useManageUsers";
 import './Signup.css';
@@ -97,6 +97,7 @@ export const Signup = () => {
                                 type="text"
                             />
                         </div>
+                        <span>Already have an account? Please <Link to="/signin">login</Link>.</span>
                         <div className="signup-section-content-form-input">
                             <Button type="submit" variant="contained" color="primary">Signup</Button>
                         </div>
