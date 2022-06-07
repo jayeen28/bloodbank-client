@@ -44,7 +44,7 @@ export const Signin = () => {
             <section className="login-section">
                 <div className="login-section-head">
                     <div className="pageHead">
-                        <h1 style={{ textAlign: 'center' }}>Signin</h1>
+                        <h1 style={{ textAlign: 'center' }}>Sign in</h1>
                     </div>
                 </div>
                 <div className="login-section-content">
@@ -69,9 +69,9 @@ export const Signin = () => {
                                 type="password"
                             />
                         </div>
-                        <span>Don't have an account? Please <Link to="/signup">signup</Link>.</span>
+                        <span>Don't have an account? Please <Link to="/signup">sign up</Link>.</span>
                         <div className="login-section-content-form-input">
-                            <Button type="submit" variant="contained" color="primary">Signin</Button>
+                            <Button type="submit" variant="contained" color="primary">Sign in</Button>
                         </div>
                     </form>
                 </div>
