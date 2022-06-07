@@ -15,7 +15,7 @@ const CryptoJS = require("crypto-js");
  */
 const useAuthentication = () => {
     //store user information
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState({});
     const [isLoading, setisLoading] = useState(true);
     const [imgLoading, setImgLoading] = useState(false);
 
