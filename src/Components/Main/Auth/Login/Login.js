@@ -29,7 +29,7 @@ export const Login = () => {
         userLogin(data)
             .then(({ data }) => {
                 manageLogedIndata(data);
-                navigate(-1);
+                navigate('/donors');
             })
             .catch(() => {
                 setisLoading(false);

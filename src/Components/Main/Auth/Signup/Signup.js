@@ -12,7 +12,6 @@ export const Signup = () => {
     const { handleSubmit, register, reset } = useForm();
 
     const handleSignup = data => {
-        //remvoe empty fields
         const notFilled = Object.keys(data).find(key => data[key] === '');
         if (notFilled) return showMessage('Please fill all fields.', 'error');
         if (data.password.length > 6) {
