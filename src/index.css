@@ -22,6 +22,9 @@ input[type=number] {
 section {
     padding: 5% 0;
 }
+a{
+  text-decoration: none;
+}
 
 .pageHead>h1{
     font-size: 40px;
