@@ -1,0 +1,86 @@
+form.profileImage-input-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    gap: 15px;
+}
+.profile-image-show {
+    position: relative;
+    height: 250px;
+    width: 250px;
+}
+.profile-information-setting {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.profile-text-managements {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 20px;
+    margin: auto;
+}
+.profile-text-managements>div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+label.profile-image-select {
+    position: absolute;
+    top: 50%;
+    left: 17%;
+    bottom: 50%;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.profile-image-show:hover>img {
+    opacity: .6;
+}
+.profile-image-show>img {
+    border-radius: 100%;
+}
+.Profile-input-wrapper>input {
+    display: block;
+    width: 100%;
+}
+.Profile-input-wrapper>label {
+    display: block;
+    font-size: 14px;
+    margin: 0px;
+}
+.Profile-input-wrapper>input:focus ,.Profile-input-wrapper>select:focus {
+    box-shadow: 0px 0px 2px #ffffff;
+}
+.Profile-input-wrapper>input,.Profile-input-wrapper>select{
+    outline: none;
+    padding: 5px 5px;
+    border-radius: 7px;
+    border: none;
+}
+.profile-info-submit-cancel {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+
+@media only screen  and (max-width:600px){
+    .profile-information-setting {
+        flex-direction: column;
+    }
+    form.profileImage-input-form {
+        width: 100%;
+    }
+    .profile-text-managements {
+        width: 90%;
+    }
+}
