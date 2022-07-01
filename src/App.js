@@ -1,10 +1,10 @@
 import './App.css';
-import { Main } from './Components/Main/Main';
-import { Footer } from './Components/Shared/Footer/Footer';
-import { Header } from './Components/Shared/Header/Header';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from "@mui/material";
 import { useState } from 'react';
+import { Routings } from './Components/Routings';
+import { Header } from './Components/Header/Header';
+import { Footer } from './Components/Footer/Footer';
 
 function App() {
   const [mode, setMode] = useState('dark');
@@ -70,7 +70,7 @@ function App() {
       <CssBaseline />
       <div className="App">
         <Header />
-        <Main />
+        <Routings />
         <Footer />
       </div>
     </ThemeProvider>

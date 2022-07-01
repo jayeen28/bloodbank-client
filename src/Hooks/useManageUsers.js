@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../Context/ContextHooks/useAuth";
 import { useAlert } from "./useAlert";
 import { useAxios } from "./useAxios";
@@ -20,6 +20,7 @@ import { useAxios } from "./useAxios";
  * @returns {function} addUser This function is used for adding user.
  */
 export const useManageUsers = () => {
+    const navigate = useNavigate();
     const handleAxios = useAxios();
     const { showMessage } = useAlert();
     const { setUser, setisLoading, setImgLoading } = useAuth();
@@ -31,10 +32,7 @@ export const useManageUsers = () => {
     }
 
     //handle registration
-    const createUser = (data) => {
-        return handleAxios({ method: 'post', uri: 'users', data })
-    }
-
+    const createUser = (data) => handleAxios({ method: 'post', uri: 'users', data })
     //update user 
     const updateUser = (data) => {
         setisLoading(true);
@@ -63,35 +61,21 @@ export const useManageUsers = () => {
             });
     }
 
-    const updateLineUp = (data) => {
-        handleAxios({ method: 'patch', uri: 'users/me', data })
-            .then(({ data, config }) => {
-                const token = config.headers.Authorization.split('Bearer ')[1];
-                setUser({ ...data, token });
-                showMessage('LineUp Formation Updated Successfully', 'success')
-            })
-            .catch((e) => showMessage('Something went wrong while updating user.', 'error'))
-    }
-
     //read profile
-    const readProfile = () => {
-        handleAxios({ method: 'get', uri: 'users/me' })
-            .then((res) => console.log(res))
-            .catch(() => showMessage('Sorry! something went wrong.', 'error'))
-    }
+    const readProfile = () => handleAxios({ method: 'get', uri: 'users/me' })
+        .then((res) => console.log(res))
+        .catch(() => showMessage('Sorry! something went wrong.', 'error'))
 
     //read profile as public
-    const readProfileAsPublic = (id) => {
-        return handleAxios({ method: 'get', uri: `users/${id}` })
-    }
+    const readProfileAsPublic = (id) => handleAxios({ method: 'get', uri: `users/${id}` })
 
     //logout user
     const userLogout = () => {
         setisLoading(true);
         handleAxios({ method: 'post', uri: 'users/logout', data: {} })
             .then(() => {
-                <Navigate to='/login' />
-                Cookies.remove('flex')
+                navigate('/signin')
+                Cookies.remove(process.env.REACT_APP_SHORT_NAME)
                 setUser({});
             })
             .catch(() => showMessage('Something went wrong while logging out.', 'error'))
@@ -99,58 +83,35 @@ export const useManageUsers = () => {
     }
 
     //logout from all sessions
-    const logOutAll = () => {
-        handleAxios({ method: 'post', uri: 'users/logoutall' })
-            .then(res => console.log(res))
-            .then(() => showMessage('Something went wrong while logging out all users', 'error'))
-    }
-
+    const logOutAll = () => handleAxios({ method: 'post', uri: 'users/logoutall' })
+        .then(res => console.log(res))
+        .then(() => showMessage('Something went wrong while logging out all users', 'error'))
     //get image and name
-    const getImgName = (id) => {
-        return handleAxios({ method: 'get', uri: `user/${id}/profile` })
-    }
-
+    const getImgName = (id) => handleAxios({ method: 'get', uri: `user/${id}/profile` })
     //get user list
-    const getUserList = (userType, isActive) => {
-        return handleAxios({ method: 'get', uri: `users?role=${userType}&active=${isActive}&sortBy=createdAt:desc` })
-    }
+    const getUserList = (userType, isActive) => handleAxios({ method: 'get', uri: `users?role=${userType}&active=${isActive}&sortBy=createdAt:desc` })
     //delete and deactivate a user
-    const delOrDeactivate = (id, actionType) => {
-        return handleAxios({ method: 'delete', uri: `users/${id}/${actionType}/` })
-    }
+    const delOrDeactivate = (id, actionType) => handleAxios({ method: 'delete', uri: `users/${id}/${actionType}/` })
     //approve user
-    const approveUser = (id, data) => {
-        return handleAxios({ method: 'patch', uri: `users/${id}`, data })
-    }
+    const approveUser = (id, data) => handleAxios({ method: 'patch', uri: `users/${id}`, data })
     //change user role
-    const userRoleChange = (id, data) => {
-        return handleAxios({ method: 'patch', uri: `users/${id}`, data })
-    }
+    const userRoleChange = (id, data) => handleAxios({ method: 'patch', uri: `users/${id}`, data })
     //user image or image with name 
-    const userImage = (id, type) => {
-        return handleAxios({ method: 'get', uri: `user/${id}/${type}` })
-    }
+    const userImage = (id, type) => handleAxios({ method: 'get', uri: `user/${id}/${type}` })
     //get user in container or task
-    const getUsers = (url) => {
-        return handleAxios({ method: 'get', uri: url })
-    }
+    const getUsers = (url) => handleAxios({ method: 'get', uri: url })
     /**
     * This function is used to send email to user so that user can know that he has assigned to a task.
     * @param {Object} data This object carries the necessary information for sending email.
     */
-    const sendEmail = (data) => {
-        return handleAxios({ method: 'POST', uri: 'email', data })
-    }
-
+    const sendEmail = (data) => handleAxios({ method: 'POST', uri: 'email', data })
     /**
      * This function is used for getting donors list.
      * @param {String} search This string is used for searching donors.
      * @param {String} page This string indicates the page user wants.
      * @param {String} limit This string indicates how many results will come for one page.
      */
-    const getDonors = (search = "Dhaka", page = '0', limit = '10') => {
-        return handleAxios({ method: 'get', uri: `donors?search=${search}&page=${page}&limit=${limit}` })
-    }
+    const getDonors = (search = "Dhaka", page = '0', limit = '10') => handleAxios({ method: 'get', uri: `donors?search=${search}&page=${page}&limit=${limit}` })
 
     return {
         updateUser,
@@ -166,7 +127,6 @@ export const useManageUsers = () => {
         userRoleChange,
         userImage,
         getUsers,
-        updateLineUp,
         readProfileAsPublic,
         sendEmail,
         getDonors

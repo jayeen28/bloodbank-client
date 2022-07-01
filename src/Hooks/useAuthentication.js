@@ -48,7 +48,7 @@ const useAuthentication = () => {
             <Navigate to='/login' />
         }
     }, []);
-
+    console.log(user)
     return {
         setUser,
         setisLoading,
