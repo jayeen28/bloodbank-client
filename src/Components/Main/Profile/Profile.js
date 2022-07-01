@@ -1,7 +1,7 @@
-import { Button, Container, TextField } from '@mui/material';
+import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
+import { Button, Container } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import './Profile.css';
-import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 
 export const Profile = () => {
     const { register, handleSubmit } = useForm();
