@@ -8,7 +8,7 @@ import { useManageUsers } from '../../Hooks/useManageUsers';
 
 export const Profile = () => {
     const { register, handleSubmit, setValue } = useForm();
-    const { user } = useAuth();
+    const { user, setUser } = useAuth();
     const { updateUser } = useManageUsers();
 
     useEffect(() => {
@@ -18,12 +18,12 @@ export const Profile = () => {
         setValue('phone', user.phone)
         setValue('address', user.address)
         setValue('bloodGroup', user.bloodGroup)
-        setValue('donating', user.donating)
     }, []);
 
     const onSubmit = data => {
+        console.log(data)
         //removed undefined elements
-        Object.keys(data).forEach(key => !data[key] && delete data[key])
+        Object.keys(data).forEach(key => data[key]?.length < 1 || data[key] === undefined && delete data[key])
         updateUser(data)
     }
 
@@ -88,7 +88,7 @@ export const Profile = () => {
                                     </div>
                                     <div className="Profile-input-wrapper">
                                         <p style={{ margin: '0px' }}>
-                                            Donating?<Switch defaultChecked={user.donating} color="warning" {...register('donating')} />
+                                            Donating?<Switch color="warning" {...register('donating')} defaultChecked={user.donating} />
                                         </p>
                                     </div>
                                 </div>
