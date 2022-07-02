@@ -3,8 +3,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from "@mui/material";
 import { useState } from 'react';
 import { Routings } from './Components/Routings';
-import { Header } from './Components/Header/Header';
-import { Footer } from './Components/Footer/Footer';
 
 function App() {
   const [mode, setMode] = useState('dark');
@@ -69,9 +67,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className="App">
-        <Header />
         <Routings />
-        <Footer />
       </div>
     </ThemeProvider>
   );
