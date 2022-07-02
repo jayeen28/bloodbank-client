@@ -28,9 +28,9 @@
     margin-top: -4px;
 }
 .donor-card {
-    border: 1px solid white;
     border-radius: 15px;
     padding: 8px;
+    background-color: #101010;
 }
 .donor-card-body-content>p {
     margin: 0px;
