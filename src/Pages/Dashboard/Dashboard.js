@@ -6,6 +6,7 @@ import { DashBar } from './DashBar/DashBar';
 import { DashBody } from './DashBody/DashBody';
 import { DashHead } from './DashHead/DashHead';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
+import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
 
 
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -30,7 +31,7 @@ export function Dashboard() {
         },
         {
             title: "Posts",
-            icon: <ShowChartIcon />,
+            icon: <DynamicFeedIcon />,
             path: "/dashboard/posts"
         }
         ])
