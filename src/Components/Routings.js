@@ -3,6 +3,8 @@ import { ErrorPage } from "../Pages/Auth/ErrorPage/ErrorPage";
 import { Signin } from "../Pages/Auth/Signin/Signin";
 import { Signup } from "../Pages/Auth/Signup/Signup";
 import { Dashboard } from "../Pages/Dashboard/Dashboard";
+import { DashHome } from "../Pages/Dashboard/Pages/DashHome/DashHome";
+import { Posts } from "../Pages/Dashboard/Pages/Posts/Posts";
 import { Donors } from "../Pages/Donors/Donors";
 import { Home } from "../Pages/Home/Home";
 import { Profile } from "../Pages/Profile/Profile";
@@ -21,7 +23,10 @@ export const Routings = () => {
                 <Route path="/donors" element={<><Header /><Donors /></>} />
                 <Route path="/time-line" element={<><Header /><TimeLine /></>} />
                 <Route path="/profile" element={<><Header /><PrivateRoute><Profile /></PrivateRoute></>} />
-                <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+                <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+                    <Route index element={<DashHome />} />
+                    <Route path="posts" element={<Posts />} />
+                </Route>
                 <Route path="*" element={<><Header /><ErrorPage /></>} />
             </Routes>
         </main>

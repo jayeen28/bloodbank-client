@@ -10,6 +10,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { styled, useTheme } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -53,6 +54,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export const DashBar = ({ open, handleDrawerClose, DrawerHeader, menus }) => {
     const theme = useTheme();
+    const navigate = useNavigate();
     return (
         <Drawer variant="permanent" open={open}>
             <DrawerHeader>
@@ -70,8 +72,9 @@ export const DashBar = ({ open, handleDrawerClose, DrawerHeader, menus }) => {
                                 justifyContent: open ? 'initial' : 'center',
                                 px: 2.5,
                             }}
+                            onClick={() => navigate(menu.path)}
                         >
-                            <Tooltip title={open ? '' : menu.title}>
+                            <Tooltip title={open ? '' : menu.title} placement="right">
                                 <ListItemIcon
                                     sx={{
                                         minWidth: 0,

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { DashBar } from './DashBar/DashBar';
 import { DashBody } from './DashBody/DashBody';
 import { DashHead } from './DashHead/DashHead';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
 
 
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -22,10 +22,18 @@ export function Dashboard() {
     const [menus, setMenus] = useState([]);
 
     useEffect(() => {
-        setMenus(menu => [...menu, {
-            title: 'Test',
-            icon: <InboxIcon />
-        }])
+        setMenus(menu => [...menu,
+        {
+            title: "Status",
+            icon: <ShowChartIcon />,
+            path: "/dashboard"
+        },
+        {
+            title: "Posts",
+            icon: <ShowChartIcon />,
+            path: "/dashboard/posts"
+        }
+        ])
     }, [])
 
     const handleDrawerOpen = () => {
