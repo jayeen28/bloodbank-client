@@ -18,7 +18,8 @@ const style = {
     bgcolor: 'background.paper',
     borderRadius: '15px',
     boxShadow: 24,
-    padding: '10px 10px'
+    padding: '10px 10px',
+    outline: 'none'
 };
 
 export const PostModal = ({ open, setOpen }) => {
@@ -41,6 +42,7 @@ export const PostModal = ({ open, setOpen }) => {
             createPost(data)
                 .then(({ data }) => {
                     setOpen(false);
+                    setImgSrc(null)
                     reset();
                 })
                 .catch(() => showMessage('Something went wrong. Please try again!', 'error'))
