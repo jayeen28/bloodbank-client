@@ -26,7 +26,7 @@ const useAuthentication = () => {
         // if token doesn't exists in cookies then redirect user to login page
         if (userToken) {
             //decrypt user token from cookies
-            const tokenBytes = CryptoJS.AES.decrypt(userToken, `${process.env.ENCRYPTION_KEY}`);
+            const tokenBytes = CryptoJS.AES.decrypt(userToken, `${process.env.REACT_APP_ENCRYPTION_KEY}`);
             const dycryptedToken = JSON.parse(tokenBytes.toString(CryptoJS.enc.Utf8));
             if (dycryptedToken) {
                 axios.get(`${process.env.REACT_APP_SERVER_URL}/users/me`, {
