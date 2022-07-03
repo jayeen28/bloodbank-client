@@ -39,7 +39,10 @@ export const PostModal = ({ open, setOpen }) => {
             const { data: { data: { display_url } } } = await uploadImg(data.image[0])
             data.image = display_url;
             createPost(data)
-                .then(({ data }) => setOpen(false))
+                .then(({ data }) => {
+                    setOpen(false);
+                    reset();
+                })
                 .catch(() => showMessage('Something went wrong. Please try again!', 'error'))
                 .finally(() => setIsLoading(false))
         }
