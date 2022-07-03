@@ -3,30 +3,6 @@
     gap: 10px;
     grid-template-columns: repeat(4,1fr);
 }
-.donor-card-header {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.donor-card-header-left-content>img {
-    width: 100%;
-    border-radius: 100%;
-}
-
-.donor-card-header-left {
-    width: 22%;
-}
-.donor-card-header-right-content>h2 {
-    margin: 0px;
-    font-size: 16px;
-    font-weight: 300;
-}
-.donor-card-header-right-content>span {
-    font-size: 12px;
-    display: block;
-    margin-top: -4px;
-}
 .donor-card {
     border-radius: 15px;
     padding: 8px;

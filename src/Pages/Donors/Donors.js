@@ -4,6 +4,7 @@ import './Donors.css';
 import SearchIcon from '@mui/icons-material/Search';
 import { useForm } from "react-hook-form";
 import { useManageUsers } from "../../Hooks/useManageUsers";
+import { CardUser } from "../../Components/CardUser/CardUser";
 
 export const Donors = () => {
     const [donors, setDonors] = useState([]);
@@ -76,19 +77,7 @@ export const Donors = () => {
                             {
                                 donors?.map(donor =>
                                     <div className="donor-card" key={donor._id}>
-                                        <div className="donor-card-header">
-                                            <div className="donor-card-header-left">
-                                                <div className="donor-card-header-left-content">
-                                                    <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="donor-photo" />
-                                                </div>
-                                            </div>
-                                            <div className="donor-card-header-right">
-                                                <div className="donor-card-header-right-content">
-                                                    <h2>{donor.name}</h2>
-                                                    <span>{donor.bloodGroup}</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <CardUser user={donor} />
                                         <div className="donor-card-body">
                                             <div className="donor-card-body-content">
                                                 <p>Address: {donor.address}</p>
