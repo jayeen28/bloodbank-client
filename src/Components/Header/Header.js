@@ -11,10 +11,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import LOGO from '../../Assets/fast-blood-white.png';
 import { useState } from 'react';
 import useAuth from '../../Context/ContextHooks/useAuth';
 import { useManageUsers } from '../../Hooks/useManageUsers';
+import { Brand } from '../Brand/Brand';
 
 const pages = [
     {
@@ -73,9 +73,7 @@ export const Header = () => {
                             component="div"
                             sx={{ flexGrow: 1, mr: 3, display: { xs: 'none', md: 'flex' } }}
                         >
-                            <div className='desktop-logo-wrapper' style={{ width: '200px', display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => navigate('/')}>
-                                <img src={LOGO} alt="Fast Blood logo" style={{ width: '100%' }} />
-                            </div>
+                            <Brand />
                         </Typography>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -128,9 +126,7 @@ export const Header = () => {
                                 component="div"
                                 sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                             >
-                                <div className='desktop-logo-wrapper' style={{ width: '200px', display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => navigate('/')}>
-                                    <img src={LOGO} alt="Fast Blood logo" style={{ width: '100%' }} />
-                                </div>
+                                <Brand />
                             </Typography>
                         </Box>
                         <Box sx={{ flexGrow: 0, mr: 4, display: { xs: 'none', md: 'flex' } }}>
