@@ -5,6 +5,9 @@ export const Posts = () => {
         <section className="posts-section">
             <div className="posts-head">
                 <PostHead />
+                <div className="pageHead">
+                    <h1>Posts</h1>
+                </div>
                 <div className="posts-boxes-section">
 
                 </div>
