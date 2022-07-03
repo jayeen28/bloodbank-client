@@ -1,4 +1,6 @@
+import { Container } from "@mui/material";
 import { useEffect, useState } from "react";
+import { PostHead } from "../../Components/PostHead/PostHead";
 import { usePosts } from "../../Hooks/usePosts";
 
 export const TimeLine = () => {
@@ -16,8 +18,16 @@ export const TimeLine = () => {
     if (isLoading) return 'Loading...';
 
     return (
-        <div>
-            <h1>TimeLine</h1>
-        </div>
+        <Container>
+            <section className="time-line-section">
+                <PostHead />
+                <div className="posts-boxes-section">
+
+                </div>
+                <div className="posts-bottom-section">
+
+                </div>
+            </section>
+        </Container>
     )
 }
