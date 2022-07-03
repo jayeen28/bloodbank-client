@@ -1,0 +1,25 @@
+.card-user-profile-img>img {
+    width: 100%;
+    border-radius: 100%;
+}
+.card-user-profile-img {
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    padding: 2px;
+}
+.card-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.card-user-profile-name>h4 {
+    margin: 0px;
+}
+.card-user-profile-name>span {
+    font-size: 13px;
+    display: block;
+    margin-top: -4px;
+}
