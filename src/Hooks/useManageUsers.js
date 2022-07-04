@@ -36,18 +36,6 @@ export const useManageUsers = () => {
     //update user 
     const updateUser = (data) => {
         setisLoading(true);
-        // if data comes with avatar update then run it to update avatar
-        if (data.avatar) {
-            setImgLoading(true);
-            handleAxios({ method: 'post', uri: 'user/me/avatar', data: data.avatar })
-                .then(() => {
-
-                })
-                .catch(err => showMessage(err.message, 'error'))
-                .finally(() => setImgLoading(false))
-        }
-        // delete avatar from data to avoid server validation error
-        delete data.avatar;
         // update data without avatar
         handleAxios({ method: 'patch', uri: 'users/me', data })
             .then(({ data, config }) => {
@@ -56,9 +44,7 @@ export const useManageUsers = () => {
                 showMessage('User updated successfully', 'success')
             })
             .catch((e) => showMessage('Something went wrong while updating user.', 'error'))
-            .finally(() => {
-                setisLoading(false);
-            });
+            .finally(() => setisLoading(false));
     }
 
     //read profile

@@ -149,7 +149,7 @@ export const Header = () => {
                                 <>
                                     <Tooltip title="Open settings">
                                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                            <Avatar src="/broken-image.jpg" />
+                                            <Avatar src={user.avatar} />
                                         </IconButton>
                                     </Tooltip>
                                     <Menu
