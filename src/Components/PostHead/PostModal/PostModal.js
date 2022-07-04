@@ -70,7 +70,7 @@ export const PostModal = ({ open, setOpen }) => {
                             </span>
                         </div>
                         <div className='set-post-description'>
-                            <textarea placeholder='Describe . . .' rows={10} autoFocus {...register('description')} />
+                            <textarea placeholder='Describe . . .' rows={10} autoFocus {...register('content')} />
                         </div>
                     </div>
                     <div className='pst-modal-bottom'>
