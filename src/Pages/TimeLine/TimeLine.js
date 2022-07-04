@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { PostBox } from "../../Components/PostBox/PostBox";
 import { PostHead } from "../../Components/PostHead/PostHead";
 import { usePosts } from "../../Hooks/usePosts";
+import './TimeLine.css'
 
 export const TimeLine = () => {
     const { getPosts } = usePosts();

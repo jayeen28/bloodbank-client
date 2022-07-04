@@ -37,8 +37,11 @@ export const PostModal = ({ open, setOpen }) => {
     const onSubmit = async (data) => {
         try {
             setIsLoading(true);
-            const { data: { data: { display_url } } } = await uploadImg(data.image[0])
-            data.image = display_url;
+            if (data.image[0]) {
+                const { data: { data: { display_url } } } = await uploadImg(data.image[0])
+                data.image = display_url;
+            } else delete data.image
+            Object.keys(data).forEach(key => !data[key] && delete data[key])
             createPost(data)
                 .then(({ data }) => {
                     setOpen(false);
