@@ -15,7 +15,7 @@ export const CardUser = ({ user }) => {
                 <h4>{user.name}</h4>
                 <span>{user.bloodGroup}</span>
             </div>
-            <CardUserPop />
+            <CardUserPop user={user} />
         </div>
     )
 }

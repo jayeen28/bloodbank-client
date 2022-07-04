@@ -27,8 +27,9 @@
 .card-user-pop-wrapper{
     display: none;
     position: absolute;
-    left: 18%;
+    left: 51px;
     top: 1%;
+    width: max-content;
     background-color: #000000;
     border: 1px solid;
     padding: 5px;
