@@ -12,9 +12,10 @@ export const usePosts = () => {
 
     /**
      * This function is used for getting all the donation post.
+     * @param {Boolean} isPrivate if isPrivate is true then this function will get own posts. Otherwise it will get all posts.
      * @returns {function} the response of the request.
      */
-    const getPosts = () => handleAxios({ method: 'GET', uri: 'posts' })
+    const getPosts = (isPrivate = false) => handleAxios({ method: 'GET', uri: `posts${isPrivate && '/me'}` })
 
     return {
         getPosts,
