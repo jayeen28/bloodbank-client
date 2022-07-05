@@ -36,7 +36,7 @@ export const TimeLine = () => {
                     }
                 </div>
                 <div className="posts-bottom-section">
-                    {nextPage && <LoadMore isLoading={isLoading} setIsLoading={setIsLoading} setPagData={setPagData} nextPage={nextPage} />}
+                    {nextPage ? <LoadMore isLoading={isLoading} setIsLoading={setIsLoading} setPagData={setPagData} nextPage={nextPage} /> : <p>No more posts</p>}
                 </div>
             </section>
         </Container>
