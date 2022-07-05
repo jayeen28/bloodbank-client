@@ -1,5 +1,6 @@
 import { CardUser } from '../CardUser/CardUser';
 import './PostBox.css';
+import { PostComment } from './PostComment/PostComment';
 import { PostContent } from './PostContent/PostContent';
 import { PostMedia } from './PostMedia/PostMedia';
 
@@ -11,6 +12,7 @@ export const PostBox = ({ post }) => {
             </div>
             <PostContent content={post.content} />
             {post.image && <PostMedia image={post.image} />}
+            <PostComment post={post} />
         </div>
     )
 }

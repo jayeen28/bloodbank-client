@@ -11,3 +11,21 @@
 .post-media-wrapper>img {
     width: 100%;
 }
+
+.post-comments-wrapper>span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: max-content;
+    margin: auto;
+    padding: 3px 10px;
+}
+.post-comments-wrapper>span:hover{
+    background-color: #5a5a5a38;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.post-comments-wrapper {
+    text-align: center;
+}
