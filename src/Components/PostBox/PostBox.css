@@ -1,6 +1,13 @@
 .postBox-wrapper {
-    border: 1px solid;
-    padding: 0.5rem;
-    border-radius: 5px;
+    background-color: #101010;
+    padding: 1rem;
+    border-radius: 15px;
+    width: 100%;
+}
+.post-media-wrapper {
+    width: 65%;
+    margin: auto;
+}
+.post-media-wrapper>img {
     width: 100%;
 }

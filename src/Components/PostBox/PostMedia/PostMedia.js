@@ -1,5 +1,7 @@
 export const PostMedia = ({ image }) => {
     return (
-        <img src={image} />
+        <div className="post-media-wrapper">
+            <img src={image} />
+        </div>
     )
 }
