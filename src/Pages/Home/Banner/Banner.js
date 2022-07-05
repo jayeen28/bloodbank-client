@@ -1,9 +1,11 @@
 import { Button, Grid } from '@mui/material';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import BannerImg from '../../../Assets/banner-photo.png';
 import './Banner.css';
 
 const Banner = () => {
+    const navigate = useNavigate();
     return (
         <section className='banner-section'>
             <Grid container spacing={5} sx={{ flexDirection: { xs: "column-reverse", sm: "row" } }}>
@@ -11,7 +13,7 @@ const Banner = () => {
                     <div className='banner-left'>
                         <div className='banner-left-content'>
                             <h1>Give blood and open doors for happiness in your life today</h1>
-                            <Button variant="contained" color="primary">
+                            <Button variant="contained" color="primary" onClick={() => navigate('/time-line')}>
                                 Donate Now
                             </Button>
                         </div>
