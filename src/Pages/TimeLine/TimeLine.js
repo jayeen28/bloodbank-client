@@ -20,7 +20,7 @@ export const TimeLine = () => {
     if (isLoading) return 'Loading...';
 
     return (
-        <Container>
+        <Container maxWidth="sm">
             <section className="time-line-section">
                 <PostHead />
                 <div className="pageHead">

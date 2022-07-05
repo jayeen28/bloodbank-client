@@ -1,6 +1,6 @@
 /* Post boxes wrapper css */
 .posts-boxes-section {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(2,1fr);
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
 }
