@@ -4,3 +4,7 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.posts-bottom-section{
+    margin-top: 20px;
+}
