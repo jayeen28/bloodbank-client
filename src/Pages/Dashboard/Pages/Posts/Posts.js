@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Container, LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { LoadMore } from "../../../../Components/LoadMore/LoadMore";
 import { PostBox } from "../../../../Components/PostBox/PostBox";
@@ -31,12 +31,14 @@ export const Posts = () => {
                         <h1>Posts</h1>
                     </div>
                     <div className="posts-boxes-section">
+                        {isLoading && <LinearProgress />}
+                        {!isLoading && !posts.length && <p>No posts found</p>}
                         {
                             posts.map(post => <PostBox key={post._id} post={post} />)
                         }
                     </div>
                     <div className="posts-bottom-section">
-                        {nextPage ? <LoadMore isLoading={isLoading} setIsLoading={setIsLoading} setPagData={setPagData} nextPage={nextPage} /> : <p>No more posts</p>}
+                        {nextPage ? <LoadMore isLoading={isLoading} setIsLoading={setIsLoading} setPagData={setPagData} nextPage={nextPage} /> : !isLoading && <p>No more posts</p>}
                     </div>
                 </div>
             </div>
