@@ -14,6 +14,7 @@ export const Donors = () => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [totalDocs, setTotalDocs] = useState(0);
+    const [group, setGroup] = useState('')
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -26,7 +27,7 @@ export const Donors = () => {
 
     const handleSearch = (data) => {
         setIsLoading(true);
-        getDonors(data.text)
+        getDonors(data.text, group)
             .then(({ data: { donors, total } }) => {
                 setDonors(donors)
                 setTotalDocs(total)
@@ -38,14 +39,14 @@ export const Donors = () => {
     useEffect(() => {
         setIsLoading(true);
         const searchText = document.getElementById('standard-basic').value || '';
-        getDonors(searchText, page, rowsPerPage)
+        getDonors(searchText, encodeURIComponent(group), page, rowsPerPage)
             .then(({ data: { donors, total } }) => {
                 setDonors(donors)
                 setTotalDocs(total)
             })
             .catch(err => console.log(err))
             .finally(() => setIsLoading(false));
-    }, [page, rowsPerPage])
+    }, [group, page, rowsPerPage])
 
     return (
         <Container>
@@ -58,8 +59,20 @@ export const Donors = () => {
                             </div>
                         </div>
                         <div className="donors-section-content-header-right">
+                            <div className="donors-section-group-select-wrapper">
+                                <select id="bloodGroup" name="bloodGroup" onChange={e => setGroup(e.target.value)}>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
                             <form onSubmit={handleSubmit(handleSearch)} className="donor-search-wrapper">
-                                <TextField id="standard-basic" label="Search" variant="standard" {...register('text')} />
+                                <TextField id="standard-basic" label="Search by address" variant="standard" {...register('text')} />
                                 <button type="submit" style={{ backgroundColor: 'transparent', border: 'none', color: 'gray' }}>
                                     <SearchIcon sx={{ marginBottom: { sm: '-16px', md: '-22px' }, '&:hover': { color: 'white', cursor: 'pointer' } }} />
                                 </button>

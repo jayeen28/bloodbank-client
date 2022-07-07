@@ -25,6 +25,15 @@ section {
 a{
   text-decoration: none;
 }
+select:focus {
+    box-shadow: 0px 0px 2px #ffffff;
+}
+select {
+    outline: none;
+    padding: 5px 5px;
+    border-radius: 7px;
+    border: none;
+}
 
 .pageHead>h1{
     font-size: 40px;
