@@ -147,11 +147,9 @@ export const Header = () => {
                         <Box sx={{ flexGrow: 0 }}>
                             {user.email ?
                                 <>
-                                    <Tooltip title="Open settings">
-                                        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                            <Avatar src={user.avatar} />
-                                        </IconButton>
-                                    </Tooltip>
+                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                        <Avatar src={user.avatar} />
+                                    </IconButton>
                                     <Menu
                                         sx={{ mt: '45px' }}
                                         id="menu-appbar"
