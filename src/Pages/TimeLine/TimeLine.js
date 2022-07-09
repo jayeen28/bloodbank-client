@@ -30,6 +30,12 @@ export const TimeLine = () => {
                 <div className="pageHead">
                     <h1>Timeline</h1>
                 </div>
+                <div className="timeline-filter">
+                    <Button variant="contained" size="small" sx={{ '&:focus': { backgroundColor: '#101010', color: 'white' } }}>All</Button>
+                    <Button variant="contained" size="small" sx={{ '&:focus': { backgroundColor: '#101010', color: 'white' } }}>Pending</Button>
+                    <Button variant="contained" size="small" sx={{ '&:focus': { backgroundColor: '#101010', color: 'white' } }}>Fulfilled</Button>
+                    <Button variant="contained" size="small" sx={{ '&:focus': { backgroundColor: '#101010', color: 'white' } }}>Nearme</Button>
+                </div>
                 <div className="posts-boxes-section">
                     {isLoading && <LinearProgress />}
                     {!isLoading && !posts.length && <p>No posts found</p>}
