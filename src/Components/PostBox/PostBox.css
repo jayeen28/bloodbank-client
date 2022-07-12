@@ -1,3 +1,7 @@
+.post-meta-data {
+    display: flex;
+    flex-direction: column;
+}
 .postBox-wrapper {
     background-color: #101010;
     padding: 1rem;

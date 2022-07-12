@@ -1,4 +1,5 @@
 import { CardUser } from '../CardUser/CardUser';
+import { PostMeta } from './PostMeta/PostMeta';
 import './PostBox.css';
 import { PostComment } from './PostComment/PostComment';
 import { PostContent } from './PostContent/PostContent';
@@ -10,6 +11,7 @@ export const PostBox = ({ post }) => {
             <div className='post-creator-wrapper'>
                 <CardUser user={post.creator} createdAt={post.createdAt} />
             </div>
+            <PostMeta address={post.address} bloodGroup={post.bloodGroup} />
             <PostContent content={post.content} />
             {post.image && <PostMedia image={post.image} />}
             <PostComment post={post} />
