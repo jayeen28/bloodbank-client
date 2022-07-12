@@ -6,15 +6,17 @@ import { Button } from '@mui/material';
 import { usePosts } from '../../../Hooks/usePosts';
 import { useForm } from 'react-hook-form';
 import { useAlert } from '../../../Hooks/useAlert';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { uploadImg } from '../../../helpers/uploadImg';
+import { BGOptions } from '../../BGOptions/BGOptions';
+import useAuth from '../../../Context/ContextHooks/useAuth';
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 600,
+    width: { sm: 'maxContent', md: 600 },
     bgcolor: 'background.paper',
     borderRadius: '15px',
     boxShadow: 24,
@@ -24,15 +26,23 @@ const style = {
 
 export const PostModal = ({ open, setOpen }) => {
     const [isLoading, setIsLoading] = useState(false);
+    const { user } = useAuth();
     const [imgSrc, setImgSrc] = useState(null);
+    const [discard, setDiscard] = useState(true)
     const { createPost } = usePosts();
-    const { handleSubmit, reset, register } = useForm();
+    const { handleSubmit, reset, register, setValue } = useForm();
     const { showMessage } = useAlert();
 
     const showImage = e => {
         const file = e.target.files[0];
         setImgSrc(URL.createObjectURL(file))
     }
+
+    useEffect(() => {
+        reset();
+        setValue('bloodGroup', user.bloodGroup);
+        setValue('address', user.address)
+    }, [discard]);
 
     const onSubmit = async (data) => {
         try {
@@ -56,7 +66,7 @@ export const PostModal = ({ open, setOpen }) => {
     return (
         <Modal
             open={open}
-            onClose={() => setOpen(false)}
+            onClose={() => { setOpen(false); setDiscard(!discard) }}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
@@ -64,7 +74,7 @@ export const PostModal = ({ open, setOpen }) => {
                 <form onSubmit={handleSubmit(onSubmit)} style={{ cursor: isLoading ? 'progress' : 'auto' }}>
                     <h3 className="post-modal-head" style={{ textAlign: 'center', marginTop: '0px' }}>Create post</h3>
                     <div className="post-modal-body">
-                        <div className="set-post-visibility">
+                        <div className="set-post-selection">
                             <span>Post visibility:
                                 <select {...register('visibility')}>
                                     <option value="public">Public</option>
@@ -72,8 +82,20 @@ export const PostModal = ({ open, setOpen }) => {
                                 </select>
                             </span>
                         </div>
-                        <div className='set-post-description'>
-                            <textarea placeholder='Describe . . .' rows={10} autoFocus {...register('content')} />
+                        <div className="set-post-selection">
+                            <span>Blood group:
+                                <select {...register('bloodGroup')}>
+                                    <BGOptions />
+                                </select>
+                            </span>
+                        </div>
+                        <div className="set-post-address">
+                            <span>Address:
+                                <input {...register('address')} />
+                            </span>
+                        </div>
+                        <div className='set-post-content'>
+                            <textarea placeholder='Describe . . .' rows={10} {...register('content')} />
                         </div>
                     </div>
                     <div className='pst-modal-bottom'>
