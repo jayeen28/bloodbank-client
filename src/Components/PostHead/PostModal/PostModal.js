@@ -26,9 +26,7 @@ const style = {
 
 export const PostModal = ({ open, setOpen }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const { user } = useAuth();
     const [imgSrc, setImgSrc] = useState(null);
-    const [discard, setDiscard] = useState(true)
     const { createPost } = usePosts();
     const { handleSubmit, reset, register } = useForm();
     const { showMessage } = useAlert();
