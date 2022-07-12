@@ -51,6 +51,7 @@ export const TimeLine = () => {
                 <div className="timeline-filter">
                     {
                         filters.map((data, i) => <Button
+                            key={data.name}
                             onFocus={() => setFocus(i)}
                             variant="contained"
                             size="small"

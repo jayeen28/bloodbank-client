@@ -1,15 +1,14 @@
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import './PostModal.css'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { Button } from '@mui/material';
-import { usePosts } from '../../../Hooks/usePosts';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useAlert } from '../../../Hooks/useAlert';
-import { useEffect, useState } from 'react';
 import { uploadImg } from '../../../helpers/uploadImg';
+import { useAlert } from '../../../Hooks/useAlert';
+import { usePosts } from '../../../Hooks/usePosts';
 import { BGOptions } from '../../BGOptions/BGOptions';
-import useAuth from '../../../Context/ContextHooks/useAuth';
+import './PostModal.css';
 
 const style = {
     position: 'absolute',
@@ -46,6 +45,7 @@ export const PostModal = ({ open, setOpen }) => {
             Object.keys(data).forEach(key => !data[key] && delete data[key])
             createPost(data)
                 .then(({ data }) => {
+                    showMessage('Posted successfully.', 'success')
                     setOpen(false);
                     setImgSrc(null)
                     reset();
@@ -82,7 +82,7 @@ export const PostModal = ({ open, setOpen }) => {
                             </span>
                         </div>
                         <div className='set-post-content'>
-                            <input placeholder='Address' {...register('address')} />
+                            <input placeholder='Address' {...register('address')} required />
                             <textarea placeholder='Describe . . .' rows={10} {...register('content')} />
                         </div>
                     </div>
