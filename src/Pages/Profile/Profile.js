@@ -6,6 +6,7 @@ import useAuth from '../../Context/ContextHooks/useAuth';
 import { useEffect, useState } from 'react';
 import { useManageUsers } from '../../Hooks/useManageUsers';
 import { uploadImg } from '../../helpers/uploadImg';
+import { BGOptions } from '../../Components/BGOptions/BGOptions';
 
 export const Profile = () => {
     const [imgSrc, setImgSrc] = useState(null);
@@ -91,14 +92,7 @@ export const Profile = () => {
                                     <div className="Profile-input-wrapper">
                                         <label htmlFor="bloodGroup" >Blood Group</label>
                                         <select id="bloodGroup" name="bloodGroup" {...register('bloodGroup')}>
-                                            <option value="A+">A+</option>
-                                            <option value="A-">A-</option>
-                                            <option value="B+">B+</option>
-                                            <option value="B-">B-</option>
-                                            <option value="AB+">AB+</option>
-                                            <option value="AB-">AB-</option>
-                                            <option value="O+">O+</option>
-                                            <option value="O-">O-</option>
+                                            <BGOptions />
                                         </select>
                                     </div>
                                     <div className="Profile-input-wrapper">

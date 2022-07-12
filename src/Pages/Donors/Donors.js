@@ -5,6 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useForm } from "react-hook-form";
 import { useManageUsers } from "../../Hooks/useManageUsers";
 import { CardUser } from "../../Components/CardUser/CardUser";
+import { BGOptions } from "../../Components/BGOptions/BGOptions";
 
 export const Donors = () => {
     const [donors, setDonors] = useState([]);
@@ -61,14 +62,7 @@ export const Donors = () => {
                         <div className="donors-section-content-header-right">
                             <div className="donors-section-group-select-wrapper">
                                 <select id="bloodGroup" name="bloodGroup" onChange={e => setGroup(e.target.value)}>
-                                    <option value="A+">A+</option>
-                                    <option value="A-">A-</option>
-                                    <option value="B+">B+</option>
-                                    <option value="B-">B-</option>
-                                    <option value="AB+">AB+</option>
-                                    <option value="AB-">AB-</option>
-                                    <option value="O+">O+</option>
-                                    <option value="O-">O-</option>
+                                    <BGOptions />
                                 </select>
                             </div>
                             <form onSubmit={handleSubmit(handleSearch)} className="donor-search-wrapper">
