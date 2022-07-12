@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { LoadMore } from "../../Components/LoadMore/LoadMore";
 import { PostBox } from "../../Components/PostBox/PostBox";
 import { PostHead } from "../../Components/PostHead/PostHead";
+import useAuth from "../../Context/ContextHooks/useAuth";
 import { usePosts } from "../../Hooks/usePosts";
 import './TimeLine.css'
 
@@ -27,7 +28,8 @@ export const TimeLine = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [pagData, setPagData] = useState({ page: 0, limit: 3 });
     const [nextPage, setNextPage] = useState(null);
-    const [focus, setFocus] = useState(0)
+    const [focus, setFocus] = useState(0);
+    const { user } = useAuth();
 
     useEffect(() => {
         getPosts(pagData.page, pagData.limit)
@@ -42,7 +44,7 @@ export const TimeLine = () => {
     return (
         <Container maxWidth="sm">
             <section className="time-line-section">
-                <PostHead />
+                {user.email && <PostHead />}
                 <div className="pageHead">
                     <h1>Timeline</h1>
                 </div>

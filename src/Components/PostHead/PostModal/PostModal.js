@@ -30,19 +30,13 @@ export const PostModal = ({ open, setOpen }) => {
     const [imgSrc, setImgSrc] = useState(null);
     const [discard, setDiscard] = useState(true)
     const { createPost } = usePosts();
-    const { handleSubmit, reset, register, setValue } = useForm();
+    const { handleSubmit, reset, register } = useForm();
     const { showMessage } = useAlert();
 
     const showImage = e => {
         const file = e.target.files[0];
         setImgSrc(URL.createObjectURL(file))
     }
-
-    useEffect(() => {
-        reset();
-        setValue('bloodGroup', user.bloodGroup);
-        setValue('address', user.address)
-    }, [discard]);
 
     const onSubmit = async (data) => {
         try {
@@ -66,7 +60,7 @@ export const PostModal = ({ open, setOpen }) => {
     return (
         <Modal
             open={open}
-            onClose={() => { setOpen(false); setDiscard(!discard) }}
+            onClose={() => { setOpen(false); reset() }}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
@@ -89,12 +83,8 @@ export const PostModal = ({ open, setOpen }) => {
                                 </select>
                             </span>
                         </div>
-                        <div className="set-post-address">
-                            <span>Address:
-                                <input {...register('address')} />
-                            </span>
-                        </div>
                         <div className='set-post-content'>
+                            <input placeholder='Address' {...register('address')} />
                             <textarea placeholder='Describe . . .' rows={10} {...register('content')} />
                         </div>
                     </div>
