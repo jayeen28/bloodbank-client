@@ -54,8 +54,8 @@ export const TimeLine = () => {
                             key={data.name}
                             disabled={isLoading}
                             onFocus={() => {
-                                setPagData({ page: 0, limit: 3 })
                                 setFocus(i)
+                                setPagData({ page: 0, limit: 3 })
                             }}
                             variant="contained"
                             size="small"
