@@ -8,7 +8,7 @@ import { uploadImg } from '../../../helpers/uploadImg';
 import { useAlert } from '../../../Hooks/useAlert';
 import { usePosts } from '../../../Hooks/usePosts';
 import { BGOptions } from '../../BGOptions/BGOptions';
-import './PostAddModal.css';
+import './ManagePostModal.css';
 
 const style = {
     position: 'absolute',
@@ -23,7 +23,7 @@ const style = {
     outline: 'none'
 };
 
-export const PostAddModal = ({ open, setOpen }) => {
+export const ManagePostModal = ({ open, setOpen }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [imgSrc, setImgSrc] = useState(null);
     const { createPost } = usePosts();

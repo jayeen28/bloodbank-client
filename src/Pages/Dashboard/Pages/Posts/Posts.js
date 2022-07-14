@@ -2,7 +2,7 @@ import { Container, LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { LoadMore } from "../../../../Components/LoadMore/LoadMore";
 import { PostBox } from "../../../../Components/PostBox/PostBox";
-import { PostAdd } from "../../../../Components/PostAdd/PostAdd"
+import { ManagePost } from "../../../../Components/ManagePost/ManagePost"
 import { usePosts } from "../../../../Hooks/usePosts";
 
 export const Posts = () => {
@@ -26,7 +26,7 @@ export const Posts = () => {
         <Container maxWidth="sm">
             <div className="posts-section">
                 <div className="posts-head">
-                    <PostAdd />
+                    <ManagePost />
                     <div className="pageHead">
                         <h1>Posts</h1>
                     </div>

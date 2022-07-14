@@ -2,7 +2,7 @@ import { Button, Container, LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { LoadMore } from "../../Components/LoadMore/LoadMore";
 import { PostBox } from "../../Components/PostBox/PostBox";
-import { PostAdd } from "../../Components/PostAdd/PostAdd";
+import { ManagePost } from "../../Components/ManagePost/ManagePost";
 import useAuth from "../../Context/ContextHooks/useAuth";
 import { usePosts } from "../../Hooks/usePosts";
 import './TimeLine.css'
@@ -44,7 +44,7 @@ export const TimeLine = () => {
     return (
         <Container maxWidth="sm">
             <section className="time-line-section">
-                {userData.user.email && <PostAdd />}
+                {userData.user.email && <ManagePost />}
                 <div className="pageHead">
                     <h1>Timeline</h1>
                 </div>
