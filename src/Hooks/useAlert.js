@@ -5,10 +5,10 @@ export const useAlert = () => {
         if (!['success', 'error'].includes(type)) return toast.error('Invalid variant.')
         toast[`${type}`](message, {
             position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
+            autoClose: 1000,
+            hideProgressBar: true,
             closeOnClick: true,
-            pauseOnHover: true,
+            pauseOnHover: false,
             draggable: true,
             progress: undefined,
         });
