@@ -5,7 +5,7 @@ export const Toaster = () => {
     return (
         <ToastContainer
             toastStyle={{ backgroundColor: "#1E1E1E" }}
-            position="top-right"
+            position="top-center"
             autoClose={3000}
             hideProgressBar={false}
             newestOnTop={false}
