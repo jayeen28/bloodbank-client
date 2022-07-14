@@ -1,10 +1,10 @@
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import { Tooltip } from '@mui/material';
 import { useState } from "react";
-import { PostModal } from "./PostModal/PostModal";
-import './PostHead.css';
+import { PostAddModal } from "./PostAddModal/PostAddModal";
+import './PostAdd.css';
 
-export const PostHead = () => {
+export const PostAdd = () => {
     const [open, setOpen] = useState(false);
 
     return (
@@ -14,7 +14,7 @@ export const PostHead = () => {
                     <PostAddIcon onClick={() => setOpen(true)} sx={{ color: 'white', cursor: 'pointer' }} fontSize="large" />
                 </Tooltip>
             </div>
-            <PostModal open={open} setOpen={setOpen} />
+            <PostAddModal open={open} setOpen={setOpen} />
         </div>
     )
 }
