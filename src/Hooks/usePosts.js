@@ -17,8 +17,14 @@ export const usePosts = () => {
      */
     const getPosts = (page, limit, isPrivate = false) => handleAxios({ method: 'GET', uri: `posts${isPrivate ? '/me' : ''}?page=${page}&&limit=${limit}` })
 
+    /**
+     * This function is used for updating post.
+     */
+    const updatePost = (id, data) => handleAxios({ method: 'PATCH', uri: `posts/${id}`, data })
+
     return {
         getPosts,
-        createPost
+        createPost,
+        updatePost
     }
 }
