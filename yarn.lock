@@ -5474,6 +5474,11 @@ jake@^10.8.5:
     filelist "^1.0.1"
     minimatch "^3.0.4"
 
+jayeen-arraystate@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/jayeen-arraystate/-/jayeen-arraystate-1.0.0.tgz#cbcb99fa3b8ec3702544b1dd8b7b8f894deb7b96"
+  integrity sha512-ifWPIFHbA7omQj1pSl4oDYu87GnM1sDEOkFk60OjdS+Q2wKa/YVwuBRGFwdAt7IJedNbH8dYh57E2oQdKjBB7A==
+
 jest-changed-files@^27.5.1:
   version "27.5.1"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-27.5.1.tgz#a348aed00ec9bf671cc58a66fcbe7c3dfd6a68f5"

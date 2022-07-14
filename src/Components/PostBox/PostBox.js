@@ -7,7 +7,7 @@ import { PostMedia } from './PostMedia/PostMedia';
 import { PostActions } from './PostActions/PostActions';
 import useAuth from '../../Context/ContextHooks/useAuth';
 
-export const PostBox = ({ post }) => {
+export const PostBox = ({ post, setPosts }) => {
     const { user } = useAuth();
     return (
         <div className='postBox-wrapper'>
@@ -16,7 +16,7 @@ export const PostBox = ({ post }) => {
                     <CardUser user={post.creator} createdAt={post.createdAt} />
                 </div>
                 {
-                    user._id === post.creator._id && <PostActions post={post} />
+                    user._id === post.creator._id && <PostActions post={post} setPosts={setPosts} />
                 }
             </div>
             <PostMeta address={post.address} bloodGroup={post.bloodGroup} />

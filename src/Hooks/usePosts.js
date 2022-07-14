@@ -19,12 +19,19 @@ export const usePosts = () => {
 
     /**
      * This function is used for updating post.
+     * @param {String} id The id of the post.
+     * @param {Object} data The data to update.
+     * @returns 
      */
     const updatePost = (id, data) => handleAxios({ method: 'PATCH', uri: `posts/${id}`, data })
+
+    const deletePost = (id) => handleAxios({ method: 'DELETE', uri: `posts/${id}` })
+
 
     return {
         getPosts,
         createPost,
-        updatePost
+        updatePost,
+        deletePost
     }
 }

@@ -6,16 +6,17 @@ import { useState } from 'react';
 import { Button } from '@mui/material';
 import { usePosts } from '../../../Hooks/usePosts';
 import { useAlert } from '../../../Hooks/useAlert';
+import { remove } from 'jayeen-arraystate';
 
 const options = [
     'Edit',
     'Delete'
 ];
 
-export const PostActions = ({ post }) => {
+export const PostActions = ({ post, setPosts }) => {
     const [isFul, setIsFul] = useState(post.status === 'fulfilled');
     const [isLoading, setIsLoading] = useState(false);
-    const { updatePost } = usePosts();
+    const { updatePost, deletePost } = usePosts();
     const { showMessage } = useAlert();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -38,6 +39,17 @@ export const PostActions = ({ post }) => {
             .finally(() => setIsLoading(false))
     }
 
+    const handleDelete = () => {
+        setIsLoading(true);
+        deletePost(post._id)
+            .then(({ data }) => {
+                showMessage('Post deleted', 'success');
+                remove(setPosts, data._id);
+            })
+            .catch((e) => showMessage(e.message, 'error'))
+            .finally(() => setIsLoading(false))
+    }
+    const handleEdit = () => console.log('edit')
     return (
         <div className='post-actions'>
             <div className='status-btn-wrapper'>
@@ -71,7 +83,13 @@ export const PostActions = ({ post }) => {
                     onClose={handleClose}
                 >
                     {options.map((option) => (
-                        <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+                        <MenuItem
+                            key={option}
+                            selected={option === 'Pyxis'}
+                            onClick={() => {
+                                handleClose();
+                                option === "Edit" ? handleEdit() : handleDelete()
+                            }}>
                             {option}
                         </MenuItem>
                     ))}

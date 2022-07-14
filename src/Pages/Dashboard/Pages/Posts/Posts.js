@@ -34,7 +34,7 @@ export const Posts = () => {
                         {isLoading && <LinearProgress />}
                         {!isLoading && !posts.length && <p>No posts found</p>}
                         {
-                            posts.map(post => <PostBox key={post._id} post={post} />)
+                            posts.map(post => <PostBox key={post._id} post={post} setPosts={setPosts} />)
                         }
                     </div>
                     <div className="posts-bottom-section">
