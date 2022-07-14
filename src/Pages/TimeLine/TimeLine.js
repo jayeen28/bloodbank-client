@@ -44,7 +44,7 @@ export const TimeLine = () => {
     return (
         <Container maxWidth="sm">
             <section className="time-line-section">
-                {userData.user.email && <ManagePost />}
+                {userData.user.email && <ManagePost setPosts={setPosts} />}
                 <div className="pageHead">
                     <h1>Timeline</h1>
                 </div>

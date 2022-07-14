@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ManagePostModal } from "./ManagePostModal/ManagePostModal";
 import './ManagePost.css';
 
-export const ManagePost = () => {
+export const ManagePost = ({ setPosts }) => {
     const [open, setOpen] = useState(false);
 
     return (
@@ -14,7 +14,7 @@ export const ManagePost = () => {
                     <PostAddIcon onClick={() => setOpen(true)} sx={{ color: 'white', cursor: 'pointer' }} fontSize="large" />
                 </Tooltip>
             </div>
-            <ManagePostModal open={open} setOpen={setOpen} />
+            <ManagePostModal open={open} setOpen={setOpen} setPosts={setPosts} />
         </div>
     )
 }

@@ -2,6 +2,7 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import { addNew } from 'jayeen-arraystate';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { uploadImg } from '../../../helpers/uploadImg';
@@ -23,7 +24,7 @@ const style = {
     outline: 'none'
 };
 
-export const ManagePostModal = ({ open, setOpen }) => {
+export const ManagePostModal = ({ open, setOpen, setPosts }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [imgSrc, setImgSrc] = useState(null);
     const { createPost } = usePosts();
@@ -45,6 +46,7 @@ export const ManagePostModal = ({ open, setOpen }) => {
             Object.keys(data).forEach(key => !data[key] && delete data[key])
             createPost(data)
                 .then(({ data }) => {
+                    setPosts(posts => [data, ...posts])
                     showMessage('Posted successfully.', 'success')
                     setOpen(false);
                     setImgSrc(null)

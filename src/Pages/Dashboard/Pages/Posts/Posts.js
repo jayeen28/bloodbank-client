@@ -26,7 +26,7 @@ export const Posts = () => {
         <Container maxWidth="sm">
             <div className="posts-section">
                 <div className="posts-head">
-                    <ManagePost />
+                    <ManagePost setPosts={setPosts} />
                     <div className="pageHead">
                         <h1>Posts</h1>
                     </div>
