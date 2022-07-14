@@ -15,7 +15,7 @@ export const usePosts = () => {
      * @param {Boolean} isPrivate if isPrivate is true then this function will get own posts. Otherwise it will get all posts.
      * @returns {function} the response of the request.
      */
-    const getPosts = (page, limit, isPrivate = false) => handleAxios({ method: 'GET', uri: `posts${isPrivate ? '/me' : ''}?page=${page}&&limit=${limit}` })
+    const getPosts = (page, limit, isPrivate = false, status = 'all') => handleAxios({ method: 'GET', uri: `posts${isPrivate ? '/me' : ''}?page=${page}&&limit=${limit}&&status=${status}` })
 
     /**
      * This function is used for updating post.

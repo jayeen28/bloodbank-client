@@ -30,16 +30,16 @@ export const TimeLine = () => {
     const [nextPage, setNextPage] = useState(null);
     const [focus, setFocus] = useState(0);
     const { user } = useAuth();
-
+    useEffect(() => setIsLoading(true), [focus])
     useEffect(() => {
-        getPosts(pagData.page, pagData.limit)
+        getPosts(pagData.page, pagData.limit, false, filters[focus].name.toLowerCase())
             .then(({ data }) => {
                 setNextPage(data.nextPage)
-                setPosts(posts => ([...posts, ...data.docs]))
+                data.page > 1 ? setPosts(posts => ([...posts, ...data.docs])) : setPosts(data.docs)
             })
             .catch(err => console.log(err))
             .finally(() => setIsLoading(false));
-    }, [pagData])
+    }, [pagData, focus])
 
     return (
         <Container maxWidth="sm">
@@ -52,7 +52,11 @@ export const TimeLine = () => {
                     {
                         filters.map((data, i) => <Button
                             key={data.name}
-                            onFocus={() => setFocus(i)}
+                            disabled={isLoading}
+                            onFocus={() => {
+                                setPagData({ page: 0, limit: 3 })
+                                setFocus(i)
+                            }}
                             variant="contained"
                             size="small"
                             sx={{ ...focus === i && { backgroundColor: '#101010', color: 'white' } }}
@@ -70,9 +74,9 @@ export const TimeLine = () => {
                     }
                 </div>
                 <div className="posts-bottom-section">
-                    {nextPage ? <LoadMore isLoading={isLoading} setIsLoading={setIsLoading} setPagData={setPagData} nextPage={nextPage} /> : !isLoading && <p>No more posts</p>}
+                    {nextPage ? <LoadMore isLoading={isLoading} setIsLoading={setIsLoading} setPagData={setPagData} nextPage={nextPage} /> : (!isLoading && posts.length !== 0) && <p>No more posts</p>}
                 </div>
             </section>
-        </Container>
+        </Container >
     )
 }
