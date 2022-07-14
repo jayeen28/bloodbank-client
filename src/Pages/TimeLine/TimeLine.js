@@ -7,29 +7,25 @@ import useAuth from "../../Context/ContextHooks/useAuth";
 import { usePosts } from "../../Hooks/usePosts";
 import './TimeLine.css'
 
-const filters = [
-    {
-        name: 'All'
-    },
-    {
-        name: 'Pending'
-    },
-    {
-        name: 'Fulfilled'
-    },
-    {
-        name: 'Nearme'
-    }
-]
-
 export const TimeLine = () => {
+    const [filters, setFilters] = useState([
+        {
+            name: 'All'
+        },
+        {
+            name: 'Pending'
+        },
+        {
+            name: 'Fulfilled'
+        }
+    ])
     const { getPosts } = usePosts();
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [pagData, setPagData] = useState({ page: 0, limit: 3 });
     const [nextPage, setNextPage] = useState(null);
     const [focus, setFocus] = useState(0);
-    const { user } = useAuth();
+    const userData = useAuth();
     useEffect(() => setIsLoading(true), [focus])
     useEffect(() => {
         getPosts(pagData.page, pagData.limit, false, filters[focus].name.toLowerCase())
@@ -41,10 +37,14 @@ export const TimeLine = () => {
             .finally(() => setIsLoading(false));
     }, [pagData, focus])
 
+    useEffect(() => {
+        if (!userData.isLoading) userData.user.email && setFilters(data => ([...data, { name: 'Nearme' }]))
+    }, [userData.isLoading])
+
     return (
         <Container maxWidth="sm">
             <section className="time-line-section">
-                {user.email && <PostAdd />}
+                {userData.user.email && <PostAdd />}
                 <div className="pageHead">
                     <h1>Timeline</h1>
                 </div>
