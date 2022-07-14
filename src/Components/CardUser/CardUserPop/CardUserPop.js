@@ -2,7 +2,7 @@ export const CardUserPop = ({ user }) => {
     return (
         <div className="card-user-pop-wrapper">
             <div className='card-user-profile-img'
-                style={{ border: `2px solid ${user.donating ? 'red' : 'white'}` }}
+                style={{ border: `2px solid ${user.donating ? 'red' : 'white'}`, height: '50px' }}
             >
                 <img src={user.avatar} alt="user image" />
             </div>
