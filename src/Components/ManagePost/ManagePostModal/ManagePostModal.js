@@ -2,7 +2,6 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { addNew } from 'jayeen-arraystate';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { uploadImg } from '../../../helpers/uploadImg';
@@ -24,7 +23,7 @@ const style = {
     outline: 'none'
 };
 
-export const ManagePostModal = ({ open, setOpen, setPosts }) => {
+export const ManagePostModal = ({ modalData, setModalData, setPosts }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [imgSrc, setImgSrc] = useState(null);
     const { createPost } = usePosts();
@@ -48,7 +47,7 @@ export const ManagePostModal = ({ open, setOpen, setPosts }) => {
                 .then(({ data }) => {
                     setPosts(posts => [data, ...posts])
                     showMessage('Posted successfully.', 'success')
-                    setOpen(false);
+                    setModalData(data => ({ action: null, open: false }));
                     setImgSrc(null)
                     reset();
                 })
@@ -59,8 +58,8 @@ export const ManagePostModal = ({ open, setOpen, setPosts }) => {
     }
     return (
         <Modal
-            open={open}
-            onClose={() => { setOpen(false); reset() }}
+            open={modalData.open}
+            onClose={() => { setModalData(data => ({ action: null, open: false })); reset() }}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
@@ -103,7 +102,7 @@ export const ManagePostModal = ({ open, setOpen, setPosts }) => {
                                 type="submit"
                                 variant="contained"
                                 color="primary"
-                                onClick={() => setOpen(true)}
+                                // onClick={() => setOpen(true)}
                                 disabled={isLoading}
                             >Submit</Button>
                         </div>

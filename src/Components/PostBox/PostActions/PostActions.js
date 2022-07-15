@@ -1,19 +1,19 @@
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { Button } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { useState } from 'react';
-import { Button } from '@mui/material';
-import { usePosts } from '../../../Hooks/usePosts';
-import { useAlert } from '../../../Hooks/useAlert';
 import { remove } from 'jayeen-arraystate';
+import { useState } from 'react';
+import { useAlert } from '../../../Hooks/useAlert';
+import { usePosts } from '../../../Hooks/usePosts';
 
 const options = [
     'Edit',
     'Delete'
 ];
 
-export const PostActions = ({ post, setPosts }) => {
+export const PostActions = ({ post, setPosts, setModalData }) => {
     const [isFul, setIsFul] = useState(post.status === 'fulfilled');
     const [isLoading, setIsLoading] = useState(false);
     const { updatePost, deletePost } = usePosts();
@@ -49,7 +49,7 @@ export const PostActions = ({ post, setPosts }) => {
             .catch((e) => showMessage(e.message, 'error'))
             .finally(() => setIsLoading(false))
     }
-    const handleEdit = () => console.log('edit')
+    const handleEdit = () => setModalData({ open: true, action: 'edit' })
     return (
         <div className='post-actions'>
             <div className='status-btn-wrapper'>

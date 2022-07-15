@@ -1,11 +1,11 @@
 import { Button, Container, LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { LoadMore } from "../../Components/LoadMore/LoadMore";
-import { PostBox } from "../../Components/PostBox/PostBox";
 import { ManagePost } from "../../Components/ManagePost/ManagePost";
+import { PostBox } from "../../Components/PostBox/PostBox";
 import useAuth from "../../Context/ContextHooks/useAuth";
 import { usePosts } from "../../Hooks/usePosts";
-import './TimeLine.css'
+import './TimeLine.css';
 
 export const TimeLine = () => {
     const [filters, setFilters] = useState([
@@ -26,6 +26,8 @@ export const TimeLine = () => {
     const [nextPage, setNextPage] = useState(null);
     const [focus, setFocus] = useState(0);
     const userData = useAuth();
+    const [modalData, setModalData] = useState({ open: false, action: null })
+
     useEffect(() => setIsLoading(true), [focus])
     useEffect(() => {
         getPosts(pagData.page, pagData.limit, false, filters[focus].name.toLowerCase())
@@ -44,7 +46,7 @@ export const TimeLine = () => {
     return (
         <Container maxWidth="sm">
             <section className="time-line-section">
-                {userData.user.email && <ManagePost setPosts={setPosts} />}
+                {userData.user.email && <ManagePost setPosts={setPosts} modalData={modalData} setModalData={setModalData} />}
                 <div className="pageHead">
                     <h1>Timeline</h1>
                 </div>
@@ -70,7 +72,7 @@ export const TimeLine = () => {
                     {isLoading && <LinearProgress />}
                     {!isLoading && !posts.length && <p>No posts found</p>}
                     {
-                        posts.map(post => <PostBox key={post._id} post={post} setPosts={setPosts} />)
+                        posts.map(post => <PostBox key={post._id} post={post} setPosts={setPosts} setModalData={setModalData} />)
                     }
                 </div>
                 <div className="posts-bottom-section">
